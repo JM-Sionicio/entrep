@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrintEase - Printing Reservation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>PrintEase</h1>
+        <p>Online Printing Reservation System</p>
+    </header>
+
+    <main>
+        <section class="container">
+            <h2>Reserve Your Printing</h2>
+            <p>Fill in the details below to reserve your printing service.</p>
+
+            <form
+                id="reservationForm"
+                action="save_reservation.php"
+                method="POST"
+                enctype="multipart/form-data"
+            >
+
+                <label for="studentName">Student Name</label>
+                <input
+                    type="text"
+                    id="studentName"
+                    name="studentName"
+                    placeholder="Enter your name"
+                    required
+                >
+
+                <label for="studentId">Student ID</label>
+                <input
+                    type="text"
+                    id="studentId"
+                    name="studentId"
+                    placeholder="Enter your student ID"
+                >
+
+                <label for="documentFile">Upload Your Document</label>
+                <input
+                    type="file"
+                    id="documentFile"
+                    name="documentFile"
+                    accept=".pdf,.doc,.docx"
+                    required
+                >
+                <small>
+                    Accepted formats: PDF, DOC, DOCX.
+                    Maximum file size: 10 MB.
+                </small>
+
+                <label for="printType">Printing Type</label>
+                <select id="printType" name="printType" required>
+                    <option value="3">Black and White - ₱3/page</option>
+                    <option value="5">Colored - ₱5/page</option>
+                </select>
+
+                <label for="paperSize">Paper Size</label>
+                <select id="paperSize" name="paperSize" required>
+                    <option value="A4">A4</option>
+                    <option value="Short Bond Paper">Short Bond Paper</option>
+                    <option value="Long Bond Paper">Long Bond Paper</option>
+                </select>
+
+                <label for="pages">Number of Pages</label>
+                <input
+                    type="number"
+                    id="pages"
+                    name="pages"
+                    min="1"
+                    max="1000"
+                    value="1"
+                    required
+                >
+
+                <label for="copies">Number of Copies</label>
+                <input
+                    type="number"
+                    id="copies"
+                    name="copies"
+                    min="1"
+                    max="100"
+                    value="1"
+                    required
+                >
+
+                <label for="pickupDate">Pickup Date</label>
+                <input
+                    type="date"
+                    id="pickupDate"
+                    name="pickupDate"
+                    required
+                >
+
+                <label for="pickupTime">Pickup Time</label>
+                <select id="pickupTime" name="pickupTime" required>
+                    <option value="">Select a time</option>
+                    <option value="9:00 AM">9:00 AM</option>
+                    <option value="10:00 AM">10:00 AM</option>
+                    <option value="11:00 AM">11:00 AM</option>
+                    <option value="1:00 PM">1:00 PM</option>
+                    <option value="2:00 PM">2:00 PM</option>
+                    <option value="3:00 PM">3:00 PM</option>
+                    <option value="4:00 PM">4:00 PM</option>
+                </select>
+
+                <label for="pickupLocation">Pickup Location</label>
+                    <select id="pickupLocation" name="pickupLocation" required>
+                    <option value="">Select a pickup location</option>
+                    <option value="Printing Shop">CCS Building B301</option>
+                    <option value="School Canteen">School Canteen</option>
+                    <option value="Main Entrance">Main Entrance</option>
+                </select>
+
+                <label for="notes">Additional Instructions</label>
+                <textarea
+                    id="notes"
+                    name="notes"
+                    rows="4"
+                    placeholder="Optional instructions"
+                ></textarea>
+
+                <div class="total">
+                    <h3>
+                        Estimated Total: ₱<span id="totalPrice">2.00</span>
+                    </h3>
+                </div>
+
+                <button type="submit">Reserve Printing</button>
+
+            </form>
+        </section>
+
+        <section class="container">
+            <h2>My Reservations</h2>
+
+            <div id="reservationList">
+                <p>
+                    Your submitted reservation will be saved
+                    in the database.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>PrintEase &copy; 2026 | Printing Reservation System</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
